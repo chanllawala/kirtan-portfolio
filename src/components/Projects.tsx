@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "./icons";
 import { Section } from "./Section";
+import { ProjectsFrame } from "./ProjectsFrame";
 import { RevealGroup, itemVariants } from "./Reveal";
 import { projects, type Project } from "@/lib/content";
 
@@ -100,33 +101,46 @@ export function Projects() {
       title="Selected work"
       description="Production platforms, freelance client work and independent AI projects — verified against my public GitHub where a repository exists."
     >
-      <RevealGroup className="grid gap-5 sm:grid-cols-2">
-        {featured.map((project, i) => (
-          <ProjectCard key={project.name} project={project} index={i + 1} />
-        ))}
-      </RevealGroup>
-
-      <div className="mt-10">
-        <button
-          type="button"
-          onClick={() => setShowAll((v) => !v)}
-          className="inline-flex items-center gap-2 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
-          aria-expanded={showAll}
+      <div className="relative">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 hidden justify-center lg:flex"
         >
-          {showAll ? "Hide additional projects" : `Show ${secondary.length} more projects`}
-          <ArrowUpRight
-            size={14}
-            className={`transition-transform ${showAll ? "rotate-[135deg]" : "rotate-45"}`}
-          />
-        </button>
+          <div className="sticky top-24 w-full">
+            <ProjectsFrame />
+          </div>
+        </div>
 
-        {showAll ? (
-          <RevealGroup className="mt-6 grid gap-5 sm:grid-cols-2">
-            {secondary.map((project, i) => (
-              <ProjectCard key={project.name} project={project} index={featured.length + i + 1} />
+        <div className="relative z-10">
+          <RevealGroup className="grid gap-5 sm:grid-cols-2">
+            {featured.map((project, i) => (
+              <ProjectCard key={project.name} project={project} index={i + 1} />
             ))}
           </RevealGroup>
-        ) : null}
+
+          <div className="mt-10">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="inline-flex items-center gap-2 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
+              aria-expanded={showAll}
+            >
+              {showAll ? "Hide additional projects" : `Show ${secondary.length} more projects`}
+              <ArrowUpRight
+                size={14}
+                className={`transition-transform ${showAll ? "rotate-[135deg]" : "rotate-45"}`}
+              />
+            </button>
+
+            {showAll ? (
+              <RevealGroup className="mt-6 grid gap-5 sm:grid-cols-2">
+                {secondary.map((project, i) => (
+                  <ProjectCard key={project.name} project={project} index={featured.length + i + 1} />
+                ))}
+              </RevealGroup>
+            ) : null}
+          </div>
+        </div>
       </div>
     </Section>
   );

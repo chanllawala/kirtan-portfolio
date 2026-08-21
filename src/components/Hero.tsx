@@ -5,6 +5,7 @@ import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { CodeWindow } from "./CodeWindow";
 import { Magnetic } from "./Magnetic";
+import { DeskScene } from "./DeskScene";
 import { heroStats, personal } from "@/lib/content";
 
 const container = {
@@ -24,6 +25,7 @@ export function Hero({ cvAvailable }: { cvAvailable: boolean }) {
       className="relative flex min-h-[92svh] flex-col justify-center overflow-hidden pt-16"
     >
       <div className="pointer-events-none absolute inset-0 bg-grid mask-fade-bottom opacity-[0.35]" />
+      <DeskScene />
       <div className="pointer-events-none absolute left-1/2 top-[-10%] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
       <motion.div
         aria-hidden="true"
@@ -130,10 +132,9 @@ export function Hero({ cvAvailable }: { cvAvailable: boolean }) {
           className="mt-16 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-8 border-t border-border pt-10 sm:grid-cols-4"
         >
           {heroStats.map((stat) => (
-            <div key={stat.label}>
-              <dt className="sr-only">{stat.label}</dt>
+            <div key={stat.label} className="flex flex-col-reverse">
+              <dt className="mt-1 text-sm text-fg-subtle">{stat.label}</dt>
               <dd className="font-mono text-2xl font-semibold text-fg sm:text-3xl">{stat.value}</dd>
-              <p className="mt-1 text-sm text-fg-subtle">{stat.label}</p>
             </div>
           ))}
         </motion.dl>
