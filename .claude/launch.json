@@ -6,6 +6,12 @@
       "runtimeExecutable": "C:\\Users\\Kirtan Chanllawala\\AppData\\Local\\nvm\\v22.21.1\\node.exe",
       "runtimeArgs": ["node_modules/next/dist/bin/next", "dev"],
       "port": 3000
+    },
+    {
+      "name": "it-helpdesk-frontend",
+      "runtimeExecutable": "C:\\Users\\Kirtan Chanllawala\\AppData\\Local\\nvm\\v22.21.1\\node.exe",
+      "runtimeArgs": ["it-helpdesk/frontend/node_modules/vite/bin/vite.js", "it-helpdesk/frontend", "--config", "it-helpdesk/frontend/vite.config.ts"],
+      "port": 5173
     }
   ]
 }

@@ -36,6 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# public/ must only ever contain intentional static assets — never source code
+/public/src/
+
+# standalone project with its own git repo (pushed separately to GitHub)
+/it-helpdesk/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

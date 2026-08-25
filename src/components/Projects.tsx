@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { GithubIcon } from "./icons";
 import { Section } from "./Section";
-import { ProjectsFrame } from "./ProjectsFrame";
 import { RevealGroup, itemVariants } from "./Reveal";
 import { projects, type Project } from "@/lib/content";
 
@@ -106,8 +106,16 @@ export function Projects() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 hidden justify-center lg:flex"
         >
-          <div className="sticky top-24 w-full">
-            <ProjectsFrame />
+          <div className="sticky top-24 h-[420px] w-full max-w-4xl overflow-hidden rounded-3xl">
+            <Image
+              src="/images/projects-desk.jpg"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 900px, 0px"
+              className="object-cover opacity-[0.16]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-bg via-bg/70 to-bg" />
+            <div className="absolute inset-0 bg-gradient-to-r from-bg/60 via-transparent to-bg/60" />
           </div>
         </div>
 

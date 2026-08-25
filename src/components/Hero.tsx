@@ -1,11 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { CodeWindow } from "./CodeWindow";
 import { Magnetic } from "./Magnetic";
-import { DeskScene } from "./DeskScene";
 import { heroStats, personal } from "@/lib/content";
 
 const container = {
@@ -24,8 +24,19 @@ export function Hero({ cvAvailable }: { cvAvailable: boolean }) {
       id="top"
       className="relative flex min-h-[92svh] flex-col justify-center overflow-hidden pt-16"
     >
-      <div className="pointer-events-none absolute inset-0 bg-grid mask-fade-bottom opacity-[0.35]" />
-      <DeskScene />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <Image
+          src="/images/desk-setup.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-[0.22]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/90 to-bg/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-transparent to-bg" />
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-grid mask-fade-bottom opacity-[0.2]" />
       <div className="pointer-events-none absolute left-1/2 top-[-10%] h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]" />
       <motion.div
         aria-hidden="true"
