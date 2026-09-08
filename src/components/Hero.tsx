@@ -1,12 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { CodeWindow } from "./CodeWindow";
 import { Magnetic } from "./Magnetic";
 import { heroStats, personal } from "@/lib/content";
+
+const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
 
 const container = {
   hidden: {},
@@ -44,6 +47,9 @@ export function Hero({ cvAvailable }: { cvAvailable: boolean }) {
         animate={{ opacity: [0.5, 0.9, 0.5] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden sm:block">
+        <HeroScene />
+      </div>
 
       <div className="container-page relative grid gap-12 xl:grid-cols-[1fr_auto] xl:items-center xl:gap-10">
       <motion.div
