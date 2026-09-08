@@ -8,6 +8,7 @@ import { GithubIcon, LinkedinIcon } from "./icons";
 import { CodeWindow } from "./CodeWindow";
 import { Magnetic } from "./Magnetic";
 import { heroStats, personal } from "@/lib/content";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
 
@@ -22,6 +23,8 @@ const item = {
 };
 
 export function Hero({ cvAvailable }: { cvAvailable: boolean }) {
+  const canShowHeroScene = useMediaQuery("(min-width: 640px)");
+
   return (
     <section
       id="top"
@@ -47,9 +50,11 @@ export function Hero({ cvAvailable }: { cvAvailable: boolean }) {
         animate={{ opacity: [0.5, 0.9, 0.5] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden sm:block">
-        <HeroScene />
-      </div>
+      {canShowHeroScene ? (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <HeroScene />
+        </div>
+      ) : null}
 
       <div className="container-page relative grid gap-12 xl:grid-cols-[1fr_auto] xl:items-center xl:gap-10">
       <motion.div
