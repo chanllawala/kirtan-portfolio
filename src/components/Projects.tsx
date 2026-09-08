@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState, type MouseEvent } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { GithubIcon } from "./icons";
@@ -10,13 +10,48 @@ import { RevealGroup, itemVariants } from "./Reveal";
 import { projects, type Project } from "@/lib/content";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const cardRef = useRef<HTMLElement>(null);
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+  const springConfig = { stiffness: 200, damping: 20 };
+  const rotateX = useSpring(useTransform(mouseY, [0, 1], [7, -7]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [0, 1], [-7, 7]), springConfig);
+  const glowX = useTransform(mouseX, [0, 1], ["0%", "100%"]);
+  const glowY = useTransform(mouseY, [0, 1], ["0%", "100%"]);
+
+  function handlePointerMove(e: MouseEvent<HTMLElement>) {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set((e.clientX - rect.left) / rect.width);
+    mouseY.set((e.clientY - rect.top) / rect.height);
+  }
+
+  function handlePointerLeave() {
+    mouseX.set(0.5);
+    mouseY.set(0.5);
+  }
+
   return (
     <motion.article
+      ref={cardRef}
       variants={itemVariants}
       whileHover={{ y: -6 }}
+      onMouseMove={handlePointerMove}
+      onMouseLeave={handlePointerLeave}
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-bg-elevated p-6 shadow-none transition-[colors,box-shadow] duration-300 hover:border-border-strong hover:shadow-xl hover:shadow-black/20"
     >
+      <motion.span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background: useTransform(
+            [glowX, glowY],
+            ([x, y]) => `radial-gradient(220px circle at ${x} ${y}, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%)`
+          ),
+        }}
+      />
       <span
         aria-hidden="true"
         className="pointer-events-none absolute -right-2 -top-4 select-none font-mono text-7xl font-semibold text-fg/[0.035] transition-colors duration-300 group-hover:text-accent/[0.08]"
