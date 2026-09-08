@@ -2,12 +2,14 @@ import Image from "next/image";
 import { Section } from "./Section";
 import { Reveal } from "./Reveal";
 import { languages, personal } from "@/lib/content";
-import { MapPin, GraduationCap, Briefcase, Languages as LanguagesIcon } from "lucide-react";
+import { MapPin, GraduationCap, Briefcase, Languages as LanguagesIcon, BadgeCheck, Car } from "lucide-react";
 
 const facts = [
   { icon: MapPin, label: "Based in", value: personal.location },
   { icon: GraduationCap, label: "Education", value: "BSc (Hons) Computing Science, Stirling" },
   { icon: Briefcase, label: "Currently", value: "Full Stack Developer, Canvia Group" },
+  { icon: BadgeCheck, label: "Right to work", value: personal.rightToWork },
+  { icon: Car, label: "Driving licence", value: personal.drivingLicence },
 ];
 
 export function About() {

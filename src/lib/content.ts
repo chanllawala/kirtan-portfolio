@@ -3,10 +3,13 @@ export const personal = {
   role: "Full Stack Developer",
   location: "Stirling, Scotland, UK",
   email: "kchanllawala@gmail.com",
+  phone: "07423 542516",
   github: "https://github.com/chanllawala",
   githubHandle: "@chanllawala",
   linkedin: "https://www.linkedin.com/in/kirtan-chanllawala-18b755230/",
   siteUrl: "https://kirtanchanllawala.dev",
+  rightToWork: "Full UK right to work — no sponsorship required",
+  drivingLicence: "Full UK driving licence, own transport",
 };
 
 export const heroStats = [
@@ -43,33 +46,46 @@ export const experience: Experience[] = [
     period: "November 2025 — Present",
     location: "Remote · UK / Canada client",
     summary:
-      "Sole developer responsible for four live production platforms, owning everything from client requirements through to deployment and maintenance.",
+      "Sole developer responsible for four live production platforms, owning everything from client requirements through to deployment and ongoing maintenance.",
     points: [
-      "Build and maintain four production platforms end to end: the Canvia Group parent site, Canvex Immigration, ViaRe Travel, and Fashionista.",
+      "Build and maintain four production platforms end to end: the Canvia Group parent site, Canvex Immigration (live: canvaximmigration.netlify.app), ViaRe Travel, and Fashiosta.",
       "Work directly with clients to gather requirements and translate business needs into shipped software.",
       "Design UI/UX and build both frontend and backend — React/TypeScript interfaces backed by Node.js and Python/Flask services with MySQL.",
       "Develop and integrate REST APIs across the platforms, and design the underlying database schemas.",
       "Own GitHub Actions CI/CD pipelines for build, test and deployment.",
-      "Handle production maintenance: bug triage, troubleshooting and iterative feature delivery from client feedback.",
+      "Now provide ongoing support and maintenance across all four platforms: bug triage, troubleshooting and iterative feature delivery from client feedback.",
     ],
     tech: ["TypeScript", "React", "Node.js", "Python", "Flask", "MySQL", "REST APIs", "GitHub Actions"],
     featured: true,
   },
   {
     org: "Self-employed",
-    role: "Freelance Full Stack Developer",
+    role: "Freelance Full Stack Developer / IT & Web Support",
     period: "June 2025 — Present",
     location: "Remote · Central Scotland",
     summary:
-      "Independent client work delivering live websites and applications across hospitality, wellness and food-service businesses.",
+      "Independent client work delivering live websites, applications and hands-on IT support across hospitality, wellness and food-service businesses.",
     points: [
+      "Gurkha Lounge Stirling — restaurant website with menu, contact functionality and SEO built in HTML, CSS and JavaScript; also configured their Windows accounts, network and POS/till integration (Jul–Oct 2025).",
+      "Kamdhenu Jyotish Reiki & Astrology (Sep 2025 — Present) — multilingual site in English, Hindi and Gujarati with booking-focused navigation.",
       "Cafe Aine — built and shipped a live client website in React and TypeScript.",
       "Cross-platform food ordering app — Flutter application with authentication, menu management, real-time order tracking and Stripe payments, currently in pre-launch testing.",
-      "Kamdhenu Jyotish Reiki & Astrology — multilingual site (English, Hindi, Gujarati) with booking forms.",
-      "Gurkha Lounge Stirling — restaurant website with menu, contact functionality and SEO built in HTML, CSS and JavaScript.",
     ],
-    tech: ["React", "TypeScript", "Flutter", "Stripe", "HTML/CSS/JS"],
+    tech: ["React", "TypeScript", "Flutter", "Stripe", "HTML/CSS/JS", "Windows Administration", "Networking", "POS Systems"],
     featured: true,
+  },
+  {
+    org: "Cygnet Infotech",
+    role: "Full Stack Developer & IT Support Engineer",
+    period: "February 2025 — April 2025",
+    location: "Remote · India",
+    summary:
+      "Full-stack contributor on a cross-disciplinary team of 10–15 building object recognition and object tracking systems.",
+    points: [
+      "Contributed across backend and frontend on a team spanning developers, analysts and designers building object recognition and object tracking systems.",
+      "Coordinated day-to-day work via Git, GitHub, Microsoft Teams and Slack across a distributed team.",
+    ],
+    tech: ["Object Recognition", "Object Tracking", "Git", "GitHub", "Microsoft Teams", "Slack"],
   },
   {
     org: "Bill Gosling Outsourcing (Castle Water contract)",
@@ -79,16 +95,16 @@ export const experience: Experience[] = [
     summary:
       "Handled 50+ customer contacts daily, resolving billing queries and setting up payment plans under SLA targets.",
     points: [
-      "Managed sensitive billing and account conversations for a UK water utility client via CRM systems.",
+      "Managed sensitive billing and account conversations for a UK water utility client, logged and tracked via CRM and ticketing systems.",
       "Set up payment plans and resolved disputes while meeting SLA targets in a high-volume contact centre.",
       "Handled confidential customer information with strict accuracy and compliance.",
     ],
-    tech: ["CRM systems", "Customer communication", "SLA delivery"],
+    tech: ["CRM systems", "Ticketing systems", "Customer communication", "SLA delivery"],
   },
   {
     org: "ALDI UK",
     role: "Store Assistant",
-    period: "August 2025 — August 2026",
+    period: "August 2025 — Present",
     location: "Alloa, Scotland",
     summary:
       "Frontline retail role built around speed, accuracy and reliability — run alongside client development work.",
@@ -130,6 +146,34 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    name: "IT Helpdesk",
+    tagline: "Full-stack ticketing system with server-enforced roles",
+    description:
+      "A full-stack IT helpdesk ticketing system built with FastAPI and React, enforcing three distinct user roles entirely on the server (not just hidden in the UI) and modelling a complete ticket status workflow, deployed via Infrastructure-as-Code on Render.",
+    points: [
+      "Three server-enforced roles governing who can create, assign and resolve tickets — permissions checked on every request, not just hidden client-side.",
+      "Full ticket status workflow from creation through resolution, backed by SQLAlchemy models on PostgreSQL.",
+      "Infrastructure-as-Code deployment configuration for reproducible deploys on Render.",
+    ],
+    tech: ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "React", "TypeScript"],
+    github: "https://github.com/chanllawala/it-helpdesk",
+    featured: true,
+  },
+  {
+    name: "Server Uptime & Alerting Tool",
+    tagline: "Self-hosted monitoring stack with incident alerting and CI",
+    description:
+      "A self-hosted uptime and alerting tool made up of three containerised services, reporting p50/p95/p99 latency and raising incident-based alerts rather than simple up/down checks, backed by a GitHub Actions pipeline running 55 automated tests.",
+    points: [
+      "Three containerised services (Docker) working together for monitoring, alerting and data storage.",
+      "Incident-based alerting plus p50/p95/p99 latency reporting for a more realistic picture of service health.",
+      "CI pipeline in GitHub Actions running 55 automated tests on every change.",
+    ],
+    tech: ["Python", "Docker", "PostgreSQL", "GitHub Actions"],
+    github: "https://github.com/chanllawala/uptime-monitor",
+    featured: true,
+  },
+  {
     name: "GPT-Based Storytelling System",
     tagline: "BSc dissertation — stateful, multi-turn LLM application",
     description:
@@ -144,12 +188,13 @@ export const projects: Project[] = [
   },
   {
     name: "AI Study Assistant Summariser",
-    tagline: "Self-hosted study summariser running an open-weights LLM",
+    tagline: "PDF summariser, quiz and flashcard generator on an open-weights LLM",
     description:
-      "A summarisation tool that runs Meta's Llama 3.2-1B via Hugging Face inside a Docker container, deployed on Render, so study material can be condensed without depending on a paid, closed API.",
+      "A study companion that extracts text from PDFs and uses Meta's Llama 3.2-1B via Hugging Face to generate summaries, quizzes, Q&A and flashcards, so study material can be condensed and tested without depending on a paid, closed API.",
     points: [
+      "PDF extraction feeding a single pipeline for summarisation, quiz generation, Q&A and flashcards.",
       "Packaged the Hugging Face model and inference server into a Docker image for reproducible deployment.",
-      "Deployed the containerised service to Render.",
+      "Simplified from a multi-container to a single-container deployment on Render, cutting deployment time by roughly 70%.",
     ],
     tech: ["Python", "Docker", "Hugging Face · Llama 3.2-1B", "Render"],
     featured: true,
@@ -237,12 +282,12 @@ export type SkillGroup = { label: string; items: string[] };
 export const skills: SkillGroup[] = [
   { label: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "Java"] },
   { label: "Frontend", items: ["React", "HTML5", "CSS3"] },
-  { label: "Backend", items: ["Node.js", "Flask", "REST APIs"] },
-  { label: "Databases", items: ["MySQL"] },
+  { label: "Backend", items: ["Node.js", "Flask", "FastAPI", "SQLAlchemy", "REST APIs"] },
+  { label: "Databases", items: ["MySQL", "PostgreSQL"] },
   { label: "Cloud & Deployment", items: ["Render", "Vercel"] },
-  { label: "DevOps", items: ["Git", "GitHub", "GitHub Actions", "Docker", "CI/CD"] },
+  { label: "DevOps", items: ["Git", "GitHub", "GitHub Actions", "Docker", "CI/CD", "Infrastructure as Code"] },
   { label: "AI / LLM", items: ["OpenAI API", "Groq · Llama 3", "Hugging Face", "Prompt Engineering", "Agent Design"] },
-  { label: "Practice", items: ["UI/UX Design", "Software Engineering", "Data Science", "ML Foundations"] },
+  { label: "Practice", items: ["UI/UX Design", "Software Engineering", "Data Science", "ML Foundations", "Monitoring & Observability"] },
 ];
 
 export const education = {
@@ -271,6 +316,16 @@ export const education = {
 };
 
 export const certifications = [
+  {
+    title: "Software Engineering Job Simulation",
+    org: "Hewlett Packard Enterprise, via Forage",
+    period: "August 2026",
+  },
+  {
+    title: "Mergers and Acquisitions for AI Innovation",
+    org: "DLA Piper, via Forage",
+    period: "August 2026",
+  },
   {
     title: "Technology Software Development Job Simulation",
     org: "Citi, via Forage",

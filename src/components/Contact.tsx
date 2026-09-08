@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
+import { ArrowUpRight, Check, Copy, Mail, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { Reveal } from "./Reveal";
 import { personal } from "@/lib/content";
@@ -30,7 +30,7 @@ export function Contact() {
           <p className="mt-4 text-lg text-fg-muted">Let&apos;s talk.</p>
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-3">
+        <Reveal delay={0.1} className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <a
             href={`mailto:${personal.email}`}
             data-cursor-label="Email"
@@ -40,6 +40,18 @@ export function Contact() {
             <div>
               <p className="text-sm font-medium text-fg">Email</p>
               <p className="mt-0.5 break-all text-xs text-fg-subtle">{personal.email}</p>
+            </div>
+          </a>
+
+          <a
+            href={`tel:${personal.phone.replace(/\s+/g, "")}`}
+            data-cursor-label="Call"
+            className="group flex flex-col items-center gap-3 rounded-2xl border border-border bg-bg-elevated p-6 text-center transition-colors hover:border-accent"
+          >
+            <Phone size={22} strokeWidth={1.75} className="text-accent" />
+            <div>
+              <p className="text-sm font-medium text-fg">Phone</p>
+              <p className="mt-0.5 text-xs text-fg-subtle">{personal.phone}</p>
             </div>
           </a>
 
